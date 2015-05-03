@@ -1,4 +1,4 @@
-# [Isaac Statistics](http://startbootstrap.com/)
+# [Isaac Statistics](http://DeEgge.github.io/isaacStats/index.html)
 
 Isaac Statistics contains information on a series of YouTube-Let's-Plays.
 
