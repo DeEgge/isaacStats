@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>The Binding of Isaac - Rebirth | Statistiken</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/grayscale.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Lustria' rel='stylesheet' type='text/css'>
+    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+<!-- Skripte für Diagramme -->
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript">
+  google.load("visualization", '1', {packages:['corechart']});
+  google.setOnLoadCallback(drawChart1);
+  google.setOnLoadCallback(drawChart2);
+  
+  function drawChart1() {
+    var queryTime = new google.visualization.Query(
+      'https://docs.google.com/spreadsheets/d/15_BmCNgJUzqQD6HsoS5XayJ2lOIU70zpE43NmOdxttQ/edit#gid=0&range=A:B');
+    queryTime.send(handleQueryResponse1);
+  }
+
+  function handleQueryResponse1(response) {
+    if (response.isError()) {
+      alert('Error in query: ' + response.getMessage() + ' ' + response.getDetailedMessage());
+      return;
+  }
+
+    var dataTime = response.getDataTable();
+    var chartTime = new google.visualization.LineChart(document.getElementById('isaacTime'));
+    var optionsTime = {
+      title: 'Dauer der Runs',
+      titleTextStyle: { color: 'white', fontName: 'Lustria', fontSize: 18 },
+      //subtitle: 'in Minuten',
+      width: 900,
+      height: 500,
+      pointSize: 4,
+      lineWidth: 3,
+      backgroundColor: '#60B99A',
+      series: { 0: { color: '#F77825' } },
+      hAxis: { title: 'Run', 
+        titleTextStyle: { color: 'white', fontName: 'Lustria' }, 
+        textStyle: { color: 'white', fontName: 'Lustria' } 
+      },
+      vAxis: { title: 'Minuten',
+        titleTextStyle: { color: 'white', fontName: 'Lustria' },
+        textStyle: { color: 'white', fontName: 'Lustria' } 
+      },
+      legend: { position: 'none' },
+      //legend: { position: 'right', textStyle: { fontSize: 11 } }
+    }
+    chartTime.draw(dataTime, optionsTime);
+  }
+
+  function drawChart2() {
+    var queryTime = new google.visualization.Query(
+      'https://docs.google.com/spreadsheets/d/11lxXUuzbfIjPEUVRRfUFSR4vDpA2JgIaGyGxfs_kdRU/gviz/tq?tq=select%20A%2C%20B%2C%20C');
+    queryTime.send(handleQueryResponse2);
+  }
+
+  function handleQueryResponse2(response) {
+  if (response.isError()) {
+    alert('Error in query: ' + response.getMessage() + ' ' + response.getDetailedMessage());
+    return;
+  }
+
+    var dataWins = response.getDataTable();
+    var chartWins = new google.visualization.ColumnChart(document.getElementById('isaacWins'));
+    var optionsWins = {
+      title: 'Siege und Niederlagen',
+      titleTextStyle: { color: 'white', fontName: 'Lustria', fontSize: 18 },
+      //subtitle: 'in Minuten',
+      width: 900,
+      height: 500,
+      backgroundColor: '#F77825',
+      series: {
+        0: { color: '#F1EFA5'},
+        1: { color: '#60B99A'}
+      },
+      //pointSize: 2,
+      isStacked: true,
+      hAxis: { title: 'Charakter', slantedText: true, 
+        titleTextStyle: { color: 'white', fontName: 'Lustria' },
+        textStyle: { fontSize: 11, color: 'white', fontName: 'Lustria' } },
+      vAxis: { title: 'Gesamt', 
+        titleTextStyle: { color: 'white', fontName: 'Lustria' },
+        textStyle: { fontSize: 11, color: 'white', fontName: 'Lustria' } },
+      legend: { position: 'right', textStyle: { fontSize: 11, color: 'white', fontName: 'Lustria'  } },
+    }
+    chartWins.draw(dataWins, optionsWins);
+  }
+</script>
+
+</head>
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand page-scroll" href="#page-top">
+                    <span class="light">† Start</span>
+                </a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+                <ul class="nav navbar-nav">
+                    <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#info">Info</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#statistiken">Statistiken</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#contact">Kontakt</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Intro Header -->
+    <header class="intro">
+        <div class="intro-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <h1 class="brand-heading">The Binding of Isaac - Rebirth</h1>
+                        <p class="intro-text">Ein Let's Play von Games und Gerstensaft<br>Gespielt von Christian</p>
+                        <a href="#info" class="btn btn-circle page-scroll">
+                            <i class="fa fa-angle-double-down animated"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="info" class="content-section text-center" style="padding-top: 100px">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+                <h2>Über das Let's Play</h2>
+                <p>Auf dem YouTube-Kanal <a href="https://www.youtube.com/user/GamesUndGerstensaft/">Games und Gerstensaft</a> von Philipp und Dominik gibt es <strong>Pixel und Promille in Reinkultur</strong>. Und ich leiste dazu meinen Beitrag, in Form eines Indie-Games namens <a href="http://bindingofisaac.com/">The Binding of Isaac - Rebirth</a>.</p>
+                <p>Das Spiel erschien am 4. November 2014, das erste Video dazu auf dem Kanal am 24. Januar 2015. Seitdem gibt es jedes Wochenende zwei Runden Isaac.</p>
+                <p>Ich möchte auf dieser Seite meine Statistiken, die ich im Laufe der Aufnahmen gesammelt habe, veröffentlichen.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Time Stats -->
+    <section id="statistiken" class="content-section text-center" style="padding-top: 0px">
+        <div class="download-section">
+            <div class="container">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <h2>Wie lange dauert ein Run in Rebirth?</h2>
+                    <span id="isaacTime"></span>
+                    <p>Im Schnitt dauert ein Rebirth-Run eine gute dreiviertel Stunde. Spitzenreiter ist ein 75-Minuten-Run mit Lazarus, am schnellsten lief es mit Samson (~28min).</p>
+                    <p>Die Spielzeit hängt stark vom Spielziel ab. Ein Run bis zu Mami ist normalerweise schneller vorbei, als ein Run bis zum Lamm oder zu Blue Baby.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="content-section text-center" style="padding-top: 100px">
+        <div class="row">
+            <div class="container">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <h2>Wie sieht die Sieg-/Niederlagen-Verteilung aus?</h2>
+                    <span id="isaacWins"></span>
+                    <p>In der Übersicht wird die Gesamtzahl der Runs mit einem Charakter in Siege und Niederlagen aufgeteilt dargestellt.</p>
+                    <p>Auffällig dabei ist, dass die beiden Charaktere Cain und Judas mit einer Wahrscheinlichkeit von 2:3 zu Niederlagen tendieren, obwohl sie als äußerst stark und siegessicher gelten.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="content-section text-center" style="background-color:#60B99A; padding-top: 0px">
+        <div class="download-section">
+            <div class="container">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <h2>Kontakt</h2>
+                    <ul class="list-inline banner-social-buttons">
+                        <li>
+                            <a href="https://twitter.com/DeEgge" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Twitter</span></a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/DeEgge" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">Github</span></a>
+                        </li>
+                        <li>
+                            <a href="https://www.youtube.com/user/GamesUndGerstensaft/" class="btn btn-default btn-lg"><i class="fa fa-youtube fa-fw"></i> <span class="network-name">YouTube</span></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container text-center">
+            <p  style="font-size:14px">Copyright &copy; DeEgge 2015 | Theme basierend auf <a href="http://startbootstrap.com/template-overviews/grayscale/">Start Bootstrap Greyscale</a></p>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="js/jquery.easing.min.js"></script>
+
+    <!-- Google Maps API Key - Use your own API key to enable the map feature. More information on the Google Maps API can be found at https://developers.google.com/maps/ -->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRngKslUGJTlibkQ3FkfTxj3Xss1UlZDA&sensor=false"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="js/grayscale.js"></script>
+
+</body>
+
+</html>
