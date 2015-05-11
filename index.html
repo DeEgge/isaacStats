@@ -22,6 +22,21 @@
     <link href='http://fonts.googleapis.com/css?family=Lustria' rel='stylesheet' type='text/css'>
     <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
 
+        <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="js/jquery.easing.min.js"></script>
+
+    <!-- Google Maps API Key - Use your own API key to enable the map feature. More information on the Google Maps API can be found at https://developers.google.com/maps/ -->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRngKslUGJTlibkQ3FkfTxj3Xss1UlZDA&sensor=false"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="js/grayscale.js"></script>
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -54,8 +69,8 @@
       title: 'Dauer der Runs',
       titleTextStyle: { color: 'white', fontName: 'Lustria', fontSize: 18 },
       //subtitle: 'in Minuten',
-      width: 900,
-      height: 500,
+      //width: 900,
+      //height: 500,
       pointSize: 4,
       lineWidth: 3,
       backgroundColor: '#60B99A',
@@ -92,8 +107,8 @@
       title: 'Siege und Niederlagen',
       titleTextStyle: { color: 'white', fontName: 'Lustria', fontSize: 18 },
       //subtitle: 'in Minuten',
-      width: 900,
-      height: 500,
+      //width: 900,
+      //height: 500,
       backgroundColor: '#F77825',
       series: {
         0: { color: '#F1EFA5'},
@@ -111,6 +126,12 @@
     }
     chartWins.draw(dataWins, optionsWins);
   }
+
+$(window).resize(function(){
+  drawChart1();
+  drawChart2();
+});
+
 </script>
 
 </head>
@@ -187,7 +208,7 @@
             <div class="container">
                 <div class="col-lg-8 col-lg-offset-2">
                     <h2>Wie lange dauert ein Run in Rebirth?</h2>
-                    <span id="isaacTime"></span>
+                    <div id="isaacTime" style="width:100%; height:500px;"></div>
                     <p>Im Schnitt dauert ein Rebirth-Run eine gute dreiviertel Stunde. Spitzenreiter ist ein 75-Minuten-Run mit Lazarus, am schnellsten lief es mit Samson (~28min).</p>
                     <p>Die Spielzeit hängt stark vom Spielziel ab. Ein Run bis zu Mami ist normalerweise schneller vorbei, als ein Run bis zum Lamm oder zu Blue Baby.</p>
                 </div>
@@ -200,7 +221,7 @@
             <div class="container">
                 <div class="col-lg-8 col-lg-offset-2">
                     <h2>Wie sieht die Sieg-/Niederlagen-Verteilung aus?</h2>
-                    <span id="isaacWins"></span>
+                    <div id="isaacWins" style="width:100%; height:500px;"></div>
                     <p>In der Übersicht wird die Gesamtzahl der Runs mit einem Charakter in Siege und Niederlagen aufgeteilt dargestellt.</p>
                     <p>Auffällig dabei ist, dass die beiden Charaktere Cain und Judas mit einer Wahrscheinlichkeit von 2:3 zu Niederlagen tendieren, obwohl sie als äußerst stark und siegessicher gelten.</p>
                 </div>
@@ -236,21 +257,6 @@
             <p  style="font-size:14px">Copyright &copy; <a href="http://www.de-egge.de/">DeEgge</a> 2015 | Theme basierend auf <a href="http://startbootstrap.com/template-overviews/grayscale/">Start Bootstrap Greyscale</a></p>
         </div>
     </footer>
-
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
-
-    <!-- Plugin JavaScript -->
-    <script src="js/jquery.easing.min.js"></script>
-
-    <!-- Google Maps API Key - Use your own API key to enable the map feature. More information on the Google Maps API can be found at https://developers.google.com/maps/ -->
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRngKslUGJTlibkQ3FkfTxj3Xss1UlZDA&sensor=false"></script>
-
-    <!-- Custom Theme JavaScript -->
-    <script src="js/grayscale.js"></script>
 
 </body>
 
